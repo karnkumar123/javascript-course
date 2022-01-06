@@ -1,0 +1,103 @@
+1> Javascript engine acts as a translater between JS and computer.
+2> We have lots of JS engine. V8 is such engine used in chrome, nodeJS and V8.NET.
+3> V8 engine was released by Google in 2008.
+4> Brendan Eich was the creator of first javascript engine and infact he only creates JS programming languages.
+   The first JS engine was Spider Monkey which is used by Firefox even now.
+5> JS engine is nothing but a set of codes or programs.
+6> V8 engine , the most popular one , is written in C++.
+7> What JS engine(or V8) really does?
+    - JS -> Parse(breaks into tokens) -> create a AST (Abstract syntax tree) -> Interpreter -> Byte Code
+                                                    |
+                                                    ^
+                                                Profiler -> Compiler -> Optimized code
+    This mixture of Byte code and optimized code is going to be understood by machine.
+8> We can see AST at astexplorer.net.
+9> Interpreter read and translates the file line by line. Initially JS works on interpreter only. Compiler scan the whole file
+   and compiled to the lower level language to the machine so that it could understand. Interpreter interpretes on the fly whereas
+   compiler compiled ahead of time.
+10> Interpreter runs and works very quick and very fast but doesn't do any optimization. On the other hand compiler takes some time
+    in population state for otimization and after that it becomes very fast.
+
+    e.g for(let i=0;i<1000;i++){
+        sum(2+3)
+    } ;
+    function sum(a,b){
+        return a+b;
+    }
+
+    For the above code, interpreter calls the sum method 1000 times even though it gives the same result because it scans 
+    line by line.This may leads a performance issue. On the other hand compiler optimizes this code like this:
+    for(let i=0;i<1000;i++){
+        5
+    }
+    Compiler understands the nature of code because it scan the whole file at first.
+    So engineer wanted to take get benefit from both the world and released a V8 engine in 2008 which uses
+    JIT compiler which is comprised of both compiler and interpreter.JIT (just in time).
+
+11> The interpreter name of V8 engine is ignition. The name of compiler of V8 engine is Turbofan.
+12> Profiler watches our code and see how can we optimize our code and create a optimized code using compiler. This process
+    happens through some algorithm and mechanism. 
+
+13> Most of the .exe file is created by C++ language. 
+
+14> Is javacript a interpreted language?
+    -> Well, Its totally depends on implementation. Initially it was designed for browsers only interpreter was The
+       natural fit for javascript at that time.But things are evolved now, we use javascript at the server side also.
+       So now we can say JS uses both in the form of JIT compiler.Interpreter for generating byte code and Compiler
+       for optimized code.
+
+15> We shouldn't use below-:
+    eval
+    arguments -> we can use object destructure
+    for in -> we can use object.keys
+    delete
+    with
+
+16> Memory heap is the place in JS engine where we keep or retrieve the value.
+
+17> Call stack is the place where we know where we are in the code execution.
+
+18> JS creates execution context in the call stack whe we invoke a function.Global execution context is the first one
+    which pushes in the call stack and also the last one which popped out from the call stack.
+
+19> Javascript is a garbage collected language. Javascript automatically removed the garbage. JS uses the mark and sweep
+    algorithm to clear the garbage.
+
+20> let a ={name: 'Tanisha'};
+    a=10;
+
+    So the memory for {name: 'Tanisha'} is no more needed now because the reference for this i.e, a is referencing to some different 
+    location where 10 is stored. So Javascript marked that location is not referenced by anyone and sweep that memory
+    Same in the case of function.When the execution context of function popped out of call stack then all the properties and
+    methods inside that function gets marked and sweeped by JS automatically.
+
+21> We should get rid of memory leak by folowing ways
+    -> Not using too much of global variables and
+    -> We should removeEventListener after use. When we registered addEventListener then the callback is stored in the
+       heap memory.But if keep adding and not using or not removing after use, may caused to memory leak.
+    -> Whatever the objects or variables describe in the setInterval are not collected by garbage collector.
+       So we will always use clearInterval after use.   
+
+22> Single threaded means executing one set of instructions at a time. We have only one call stack.
+
+23> ----------------------------------------------------------------------------------------------------------------|
+    |                                    Javascript Runtime(Nodejs)                                                  |                                         |
+    |                 JS engine                                              Webapi (or node api)                    |                    |
+    |             call stack and Memory heap                                  1> SetRimeout                          |                          |
+    |                                                                         2> fetch                               |
+    |                                                                         3> DOM                                 |
+    |                                                                                                                |
+    |                                                       event loop       callback queue                          |                      |
+    |                                                                                                                |
+    ------------------------------------------------------------------------------------------------------------------
+
+24> Browsers provide the global object Window by which javascript can access webapi. 
+    like window.setTimeout or window.fetch or window.document.addEventListener
+    In node js env, the global object is global. These wepaoi or nodeapi does the asynchronous work.
+
+25> latentflip.com/loupe is the website to visualize async work.Very good.
+
+26> Models of nodejs is also same as js runtime with some changes. In node env, we can do I/O operations(file system) or
+    work with network capabilities. These things are provided by LIBUV(written in c++) in node js.
+
+video till 14

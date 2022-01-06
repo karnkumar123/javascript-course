@@ -100,4 +100,3 @@
 26> Models of nodejs is also same as js runtime with some changes. In node env, we can do I/O operations(file system) or
     work with network capabilities. These things are provided by LIBUV(written in c++) in node js.
 
-video till 14

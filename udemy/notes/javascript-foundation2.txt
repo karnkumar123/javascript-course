@@ -1,0 +1,83 @@
+1> Execution context is created whenever we invoke a funtion and put in the call stack.
+
+2> Lexical scope or Lexical environment
+    -> Whether the code is written at compile time.
+    function a(){
+        function b(){
+
+        }
+    }
+    We can say that function b is lexically inside function a , function a is lexically inside global scope.
+    Lexical scope(where the function is defined) determines our available variables not where the function was called
+    (dynamic scope).
+
+3> Javascript codes run in two phases memory creation phases and code execution phase. JS engine looks through the code
+   and assigns the memory for variables and function declaration before the execution of single line of code. 
+   Its asigned value undefined to the variable and function block for the functions as a key value pair. 
+   This process is called hoisting. hoisting occurs in each and every execution context.
+
+4> var marry = function(bride, groom){
+    console.log(arguments);
+} 
+ marry('Tim', 'Tina')  // [Arguments] { '0': 'Tim', '1': 'Tina' }
+
+5> We shouldn't use arguments , rather we can use other techniques
+   console.log(Array.from(arguments)) // [ 'Tim', 'Tina' ]
+
+   or we can use rest parameters
+
+   var marry = function(...args){
+        console.log(args[0], args[1]);
+    } 
+  marry('Tim', 'Tina')
+
+6> Whenever JS engine doesn't find any variables in the function then it will go one level up in the scope and so on. This 
+   is scope chain. Lexical environment is nothing but a scope.
+
+7> We have [[scope]] in the function definition which tells us all the scope available for any function.
+
+8>  function a(){
+        height = 100;
+    }
+    JS engine sees that nothing is used to declare the variables height so JS add it to global scope. This is 
+    called leakage of global scope. If we want to stop it, we can use 'use strict'
+
+    var myFunc = function doodle(){
+        // do nothing
+    }
+    doodle() // throws reference error because doodle is defined in it local environment.It can be access inside the function.
+
+9> ES6 modules has 'use strict' by default.
+
+10> This keyword concepts -
+        -> this is the object that the function is a property of
+        -> gives methods access to their ojects
+        -> execute same code for multiple objects
+        -> this is created for every execution context for function 
+        -> this has dynamic scope
+
+11> In normal function, this has dynamic scope, but in arrow function , this has lexical scope.
+    It means this refer to the wrapping obj .
+
+12> function a(){
+        // do something
+    }
+    a();
+    Under the hood , JS engine call this method using a.call() or a.apply()
+
+12> call, apply and bind are used to borrow methods from the other objects. call and apply both are same , the only
+    difference is we send params as a array in apply. call and apply calls the methods immidiately but bind just return 
+    a function with the new scope of this. We send the params in bind just like call not apply.
+    We use bind when we want to call the method later.IIFE -
+        function(){
+            // do something
+        }
+    see example for details
+
+13> Scope - visibility of variables or methods 
+    Context - what's the this value in this context
+
+14> IIFE -
+    (function(){
+        // do something
+    })()

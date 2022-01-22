@@ -1,0 +1,70 @@
+1> We have 7 types in javascript
+    -> number
+    -> string
+    -> boolean
+    -> undefined
+    -> null  - typeof null = object
+    -> object
+    -> Symbol
+
+2> typeof null is objects is a bug. Even the creator of javascript Brendon Eich acknowledgement it. Actually there is a
+   proposal to fix that but we have too much legacy code in javascript which depends on null and its type
+   '
+3> undefined - absence of definition
+   null - absence of value
+
+4> typeof {} or typeof []  = objects
+   typeof function(){} = functions
+
+5> Others than objects, all are primitive, and objects are non-primitive
+
+6> Built-in objects in JS - Math, Date or Number or Boolean
+
+7> typeof [1,2,3,4] // objects
+   Array.isArray([1,2,3,4]) // true
+   [1,2,4] instanceof Array // true
+
+8> shalloclone, deepclone
+
+    let a = 10;  // a refer to the address where value 10 sits in memory
+    let b = a;  // a passes its value i.e 10 to b, pass by value
+    b = b+20;
+    console.log(a) // 10
+    console.log(b) // 30
+
+    it means a and b refers to the address of different memory locations where value 10 sits
+    So, primitive members are immutable means can't change their value
+
+    But array and objects are mutable,
+
+    let a = {a:'A', b: 'B'} // a refer to the address where value {a:'A', b: 'B'} sits in memory
+    let b = a; // a passes its reference where {a:'A', b: 'B'} is stored to b, pass by reference
+    b.b = 'Z';
+    console.log(a) // {a:'A', b: 'Z'}
+    console.log(b) // {a:'A', b: 'Z'}
+
+    it means a and b refers to the address of same memory locations where value {a:'A', b: 'B'} sits
+    So, non-primitive members(objects and arrays) are mutable means can change their value.
+
+    But to create two different copies in arrays, we use
+    let arr1 = [1,2,3];
+    let arr2 = [...arr1];   // spread operator
+
+    let arr1 = [1,2,3];
+    let arr2 = [].concat(arr1); // array concat method
+
+    But to create two different copies in objects, we use
+    let obj1 = {a: 'A', b: 'B'};
+    let obj2 = {...obj1}  // spread operator
+
+    let obj1 = {a: 'A', b: 'B'};
+    let obj2 = Object.assign({}, obj1)  //Object.assign method
+
+    But the above only does shallow copy, means it doesn't create copy if we have nested objects,
+    We can use JSON.parse(JSON.stringify(obj))  for deep copy
+
+9> let a = 10; // dynamic type
+   a = true // weakly typed dynamic language , javascript
+
+
+

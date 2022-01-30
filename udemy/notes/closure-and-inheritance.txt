@@ -1,0 +1,41 @@
+1> Closure and prototypal inheritance are two pillar of javascript.
+
+2> Every functions is a object.
+
+3> Whenever we invoke a function , a execution context is created with two variables arguments and this.
+
+4> const myFunction = new Function('num', 'return num')
+
+5> Functions are first class citizens in javascript.It means three things
+    i> -> we can assign any function in variable
+          let myFunc = function(){}
+
+    ii> -> we can pass function as a parameter in another function
+           var myFunc = function(fn){
+               fn()
+           }
+           myFunc(() => console.log('hi'));
+
+    iii> -> we can return function from a function
+            function a(){
+                return function(){
+                    console.log('hello');
+                }
+            }
+
+6> Higher order functions
+    -> A function which takes function as a parameter or return a function is called a higher order function.
+
+7> A closure is the combination of function and the lexical environment where it is declared. 
+   closure allows function to use variables from the enclosing environment even after it leaves the scope where it is declared.
+
+8> const arr = new Array(1000).fill(0) // creating array of 1000 enteries and all are 0
+
+
+9> Two main benefits of closure are memory efficient and encapsulation.
+
+10> Basic of prototype , see example in prototype1.js file
+
+11> 
+   
+   
